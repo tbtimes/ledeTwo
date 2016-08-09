@@ -1,18 +1,47 @@
 {% if bit.slides -%}
 <!-- Swiper -->
-<div class="fs swiper-container{% if bit.orientation %} swiper-container-{{ bit.orientation }}{% endif %}
+<div class="fs lede swiper-container{% if bit.orientation %} swiper-container-{{ bit.orientation }}{% endif %}
 "{% if bit.orientation %} data-orientation="{{ bit.orientation }}"{% endif %}>
   <div class="swiper-wrapper">
     {% for each in bit.slides -%}
     <div class="swiper-slide">
       <div class="slide-content">
-        {% if each.img %}<img src="{{ each.img }}">{% endif %}
-        <div class="slide-text-block"{% if bit.top and not each.top %} style="top: {{ bit.top }};"{% endif %}{% if each.top %} style="top: {{ each.top }};"{% endif %}>
-          {% if each.hed %}<h2>{{ each.hed }}</h2>{% endif %}
-          {% if each.text %}<p>{{ each.text }}</p>{% endif %}
+
+      <figure class="{% if each.class %}{{ each.class }}{% endif %}">
+        <img {% if each.alt %} alt="{{ each.alt }}" {% endif %}
+          {% if each.directsrc %} src="{{ each.directsrc }}"{% else %}
+          src="//s3.amazonaws.com/ledejs/resized/{{ $projectName }}/1024/{{ each.src }}.{% if each.imgtype %}{{ each.imgtype }}{% else %}jpg{% endif %}" srcset="
+          //s3.amazonaws.com/ledejs/resized/{{ $projectName }}/480/{{ each.src }}.{% if each.imgtype %}{{ each.imgtype }}{% else %}jpg{% endif %} 480w,
+          //s3.amazonaws.com/ledejs/resized/{{ $projectName }}/480/{{ each.src }}-2x.{% if each.imgtype %}{{ each.imgtype }}{% else %}jpg{% endif %} 960w,
+          //s3.amazonaws.com/ledejs/resized/{{ $projectName }}/600/{{ each.src }}.{% if each.imgtype %}{{ each.imgtype }}{% else %}jpg{% endif %} 600w,
+          //s3.amazonaws.com/ledejs/resized/{{ $projectName }}/1024/{{ each.src }}.{% if each.imgtype %}{{ each.imgtype }}{% else %}jpg{% endif %} 1024w,
+          //s3.amazonaws.com/ledejs/resized/{{ $projectName }}/600/{{ each.src }}-2x.{% if each.imgtype %}{{ each.imgtype }}{% else %}jpg{% endif %} 1200w,
+          //s3.amazonaws.com/ledejs/resized/{{ $projectName }}/1500/{{ each.src }}.{% if each.imgtype %}{{ each.imgtype }}{% else %}jpg{% endif %} 1500w,
+          //s3.amazonaws.com/ledejs/resized/{{ $projectName }}/1024/{{ each.src }}-2x.{% if each.imgtype %}{{ each.imgtype }}{% else %}jpg{% endif %} 2048w,
+          //s3.amazonaws.com/ledejs/resized/{{ $projectName }}/1500/{{ each.src }}-2x.{% if each.imgtype %}{{ each.imgtype }}{% else %}jpg{% endif %} 3000w
+        " sizes="
+          (max-width: 479px) 480px,
+          (min-width: 480px) and (max-width: 599px) 600px,
+          (min-width: 600px) and (max-width: 1023px) 1024px,
+          (min-width: 1024px) 1500px,
+          100vw
+      {% endif %}">
+
+
+        <div class="headline-overlay
+          {%- if each.textbackground %} textbackground{% endif %}
+          {%- if each.textshadow %} textshadow{% endif %}
+          {%- if each.ypos == 'top' %} top{% elif each.ypos == 'middle' %} middle{% elif each.ypos == 'bottom' %} bottom{% endif %}
+          {%- if each.xpos == 'left' %} left{% elif each.xpos == 'center' %} center{% elif each.xpos == 'right' %} right{% endif %}">
+        {% if each.kicker %}<h2 style="{% if each.textcolor %}color: {{ each.textcolor }};{% endif %}{% if each.headsize %} font-size: calc(1.5vw * (1 + {{ each.headsize }}) + 27px){% endif %}">{{ each.kicker }}</h2>{% endif %}
+        {% if each.hed %}<h1 style="{% if each.textcolor %}color: {{ each.textcolor }};{% endif %}{% if each.headsize %} font-size: calc(3vw * (1 + {{ each.headsize }}) + 27px){% endif %}">{{ each.hed }}</h1>{% endif %}
+        {% if each.subhed %}<h2 style="{% if each.textcolor %}color: {{ each.textcolor }};{% endif %}{% if each.headsize %} font-size: calc(1.5vw * (1 + {{ each.headsize }}) + 27px){% endif %}">{{ each.subhed }}</h2>{% endif %}
+        {% if each.text %}<p style="{% if each.textcolor %}color: {{ each.textcolor }};{% endif %}{% if each.headsize %} font-size: calc(1vw * (1 + {{ each.headsize }}) + 18px){% endif %}">{{ each.text }}</p>{% endif %}
+      </div>
+
+
         </div>
       </div>
-    </div>
     {%- endfor %}
   </div>
   <!-- Add Pagination -->
