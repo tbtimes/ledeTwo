@@ -5,6 +5,7 @@ import { resolve as presolve } from "path";
 import { homedir } from "os";
 import { Dependency, ProjectReport, ContentResolver } from "../interfaces";
 import { CircularDepError, NotAFile } from "../errors";
+import * as aml from "archieml";
 
 declare module aml {
   export function load(input: string): any;
