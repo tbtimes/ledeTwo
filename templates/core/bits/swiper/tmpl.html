@@ -7,8 +7,10 @@
     <div class="swiper-slide">
       <div class="slide-content">
         {% if each.img %}<img src="{{ each.img }}">{% endif %}
-        {% if each.hed %}<h2>{{ each.hed }}</h2>{% endif %}
-        {% if each.text %}<p>{{ each.text }}</p>{% endif %}
+        <div class="slide-text-block"{% if bit.top and not each.top %} style="top: {{ bit.top }};"{% endif %}{% if each.top %} style="top: {{ each.top }};"{% endif %}>
+          {% if each.hed %}<h2>{{ each.hed }}</h2>{% endif %}
+          {% if each.text %}<p>{{ each.text }}</p>{% endif %}
+        </div>
       </div>
     </div>
     {%- endfor %}
@@ -17,3 +19,28 @@
   <div class="swiper-pagination"></div>
 </div>
 {%- endif %}
+
+<!-- Sample AML below
+You can set vertical position of text block globally and individually
+
+tmpl: core/swiper
+orientation: vertical
+top: 90%
+[.slides]
+hed: Slide 1
+text: This is some copy
+img: http://54.211.200.87/preview/test/assets/test/img/1500/racialDivide.jpg
+top: 10%
+hed: Slide 2
+text: To fill up some space
+img: http://s3.amazonaws.com/ledejs/resized/test/1500/melrose-school-exterior.jpg
+hed: Slide 3
+text: I haven’t no more thoughts
+img: http://s3.amazonaws.com/ledejs/resized/test/1500/notParents.jpg
+hed: Slide 4
+text: And my grammer and spelling are bad
+img: http://s3.amazonaws.com/ledejs/resized/test/1500/slowAct.jpg
+
+[]
+
+-->

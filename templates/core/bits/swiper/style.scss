@@ -576,3 +576,13 @@ button.swiper-pagination-bullet {
   -webkit-align-items: center;
   align-items: center;
 }
+
+.slide-content {
+  position: relative;
+}
+.slide-text-block {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
