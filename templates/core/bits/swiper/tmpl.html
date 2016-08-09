@@ -1,0 +1,75 @@
+{% if bit.slides -%}
+<!-- Swiper -->
+<div class="fs lede swiper-container{% if bit.orientation %} swiper-container-{{ bit.orientation }}{% endif %}
+"{% if bit.orientation %} data-orientation="{{ bit.orientation }}"{% endif %}>
+  <div class="swiper-wrapper">
+    {% for each in bit.slides -%}
+    <div class="swiper-slide">
+      <div class="slide-content">
+
+      <figure class="{% if each.class %}{{ each.class }}{% endif %}">
+        <img {% if each.alt %} alt="{{ each.alt }}" {% endif %}
+          {% if each.directsrc %} src="{{ each.directsrc }}"{% else %}
+          src="//s3.amazonaws.com/ledejs/resized/{{ $projectName }}/1024/{{ each.src }}.{% if each.imgtype %}{{ each.imgtype }}{% else %}jpg{% endif %}" srcset="
+          //s3.amazonaws.com/ledejs/resized/{{ $projectName }}/480/{{ each.src }}.{% if each.imgtype %}{{ each.imgtype }}{% else %}jpg{% endif %} 480w,
+          //s3.amazonaws.com/ledejs/resized/{{ $projectName }}/480/{{ each.src }}-2x.{% if each.imgtype %}{{ each.imgtype }}{% else %}jpg{% endif %} 960w,
+          //s3.amazonaws.com/ledejs/resized/{{ $projectName }}/600/{{ each.src }}.{% if each.imgtype %}{{ each.imgtype }}{% else %}jpg{% endif %} 600w,
+          //s3.amazonaws.com/ledejs/resized/{{ $projectName }}/1024/{{ each.src }}.{% if each.imgtype %}{{ each.imgtype }}{% else %}jpg{% endif %} 1024w,
+          //s3.amazonaws.com/ledejs/resized/{{ $projectName }}/600/{{ each.src }}-2x.{% if each.imgtype %}{{ each.imgtype }}{% else %}jpg{% endif %} 1200w,
+          //s3.amazonaws.com/ledejs/resized/{{ $projectName }}/1500/{{ each.src }}.{% if each.imgtype %}{{ each.imgtype }}{% else %}jpg{% endif %} 1500w,
+          //s3.amazonaws.com/ledejs/resized/{{ $projectName }}/1024/{{ each.src }}-2x.{% if each.imgtype %}{{ each.imgtype }}{% else %}jpg{% endif %} 2048w,
+          //s3.amazonaws.com/ledejs/resized/{{ $projectName }}/1500/{{ each.src }}-2x.{% if each.imgtype %}{{ each.imgtype }}{% else %}jpg{% endif %} 3000w
+        " sizes="
+          (max-width: 479px) 480px,
+          (min-width: 480px) and (max-width: 599px) 600px,
+          (min-width: 600px) and (max-width: 1023px) 1024px,
+          (min-width: 1024px) 1500px,
+          100vw
+      {% endif %}">
+
+
+        <div class="headline-overlay
+          {%- if each.textbackground %} textbackground{% endif %}
+          {%- if each.textshadow %} textshadow{% endif %}
+          {%- if each.ypos == 'top' %} top{% elif each.ypos == 'middle' %} middle{% elif each.ypos == 'bottom' %} bottom{% endif %}
+          {%- if each.xpos == 'left' %} left{% elif each.xpos == 'center' %} center{% elif each.xpos == 'right' %} right{% endif %}">
+        {% if each.kicker %}<h2 style="{% if each.textcolor %}color: {{ each.textcolor }};{% endif %}{% if each.headsize %} font-size: calc(1.5vw * (1 + {{ each.headsize }}) + 27px){% endif %}">{{ each.kicker }}</h2>{% endif %}
+        {% if each.hed %}<h1 style="{% if each.textcolor %}color: {{ each.textcolor }};{% endif %}{% if each.headsize %} font-size: calc(3vw * (1 + {{ each.headsize }}) + 27px){% endif %}">{{ each.hed }}</h1>{% endif %}
+        {% if each.subhed %}<h2 style="{% if each.textcolor %}color: {{ each.textcolor }};{% endif %}{% if each.headsize %} font-size: calc(1.5vw * (1 + {{ each.headsize }}) + 27px){% endif %}">{{ each.subhed }}</h2>{% endif %}
+        {% if each.text %}<p style="{% if each.textcolor %}color: {{ each.textcolor }};{% endif %}{% if each.headsize %} font-size: calc(1vw * (1 + {{ each.headsize }}) + 18px){% endif %}">{{ each.text }}</p>{% endif %}
+      </div>
+
+
+        </div>
+      </div>
+    {%- endfor %}
+  </div>
+  <!-- Add Pagination -->
+  <div class="swiper-pagination"></div>
+</div>
+{%- endif %}
+
+<!-- Sample AML below
+You can set vertical position of text block globally and individually
+
+tmpl: core/swiper
+orientation: vertical
+top: 90%
+[.slides]
+hed: Slide 1
+text: This is some copy
+img: http://54.211.200.87/preview/test/assets/test/img/1500/racialDivide.jpg
+top: 10%
+hed: Slide 2
+text: To fill up some space
+img: http://s3.amazonaws.com/ledejs/resized/test/1500/melrose-school-exterior.jpg
+hed: Slide 3
+text: I haven’t no more thoughts
+img: http://s3.amazonaws.com/ledejs/resized/test/1500/notParents.jpg
+hed: Slide 4
+text: And my grammer and spelling are bad
+img: http://s3.amazonaws.com/ledejs/resized/test/1500/slowAct.jpg
+
+[]
+
+-->
