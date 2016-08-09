@@ -1,6 +1,7 @@
-{% if bit.slides -%}<!-- Swiper -->
-<div class="swiper-container swiper-container-vertical fs
-">
+{% if bit.slides -%}
+<!-- Swiper -->
+<div class="fs swiper-container{% if bit.orientation %} swiper-container-{{ bit.orientation }}{% endif %}
+"{% if bit.orientation %} data-orientation="{{ bit.orientation }}"{% endif %}>
   <div class="swiper-wrapper">
     {% for each in bit.slides -%}
     <div class="swiper-slide">
