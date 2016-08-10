@@ -9,7 +9,7 @@ header {
   top: 0;
   background-color: $accentcolor;
   // @media screen and (min-width: $screen-sm-min) {
-  @include media-breakpoint-up(sm) {
+  @include media-breakpoint-up(md) {
     height: 50px;
     padding: $portal-padding-desktop;
   }
@@ -21,7 +21,7 @@ header {
   height: 23px;
   position: relative;
   top: 8px;
-  &.hidden-xs-down {
+  &.hidden-sm-down {
     height: 30px;
     top: 12px;
   }
@@ -34,7 +34,7 @@ header {
     margin: 0 3px;
   }
   // @media screen and (min-width: $screen-sm-min) {
-  @include media-breakpoint-up(sm) {
+  @include media-breakpoint-up(md) {
     // top: 14px;
     img {
       margin: 0 5px;
