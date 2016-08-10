@@ -579,10 +579,15 @@ button.swiper-pagination-bullet {
 
 .slide-content {
   position: relative;
+  figure img {
+    width: auto;
+    height: 100%;
+  }
 }
-.slide-text-block {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
+// .slide-text-block {
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+// }
+
