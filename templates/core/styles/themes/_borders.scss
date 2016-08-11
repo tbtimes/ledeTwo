@@ -1,0 +1,26 @@
+@import 'core/mixins';
+
+.main-column {
+  border: 1px dotted #ccc;
+  border-width: 0 1px;
+}
+figure {
+  background-color: $gray-lightest;
+  padding: 1em 0;
+  border: 1px dotted #ccc;
+  border-width: 1px 0;
+}
+.fs {
+  .fixedimg {
+    figcaption {
+      border-bottom: 1px dotted #ccc;
+      padding-bottom: 1em;
+      margin-bottom: 1em;
+    }
+  }
+  &.hedline {
+    h1 {
+      border-bottom: 1px dotted #ccc;
+    }
+  }
+}

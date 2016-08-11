@@ -1,8 +1,5 @@
 figure {
-  background-color: $gray-lightest;
   padding: 1em 0;
-  border: 1px dotted #ccc;
-  border-width: 1px 0;
 }
 figcaption {
   font-family: $font-family-sans-serif;
@@ -44,7 +41,6 @@ figcaption {
 .fs {
   .fixedimg {
     figcaption {
-      border-bottom: 1px dotted #ccc;
       padding-bottom: 1em;
       margin-bottom: 1em;
     }
