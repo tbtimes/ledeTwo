@@ -1,0 +1,34 @@
+{% if bit.slides -%}
+<!-- Swiper -->
+<div class="fs lede swiper-container{% if bit.direction %} swiper-container-{{ bit.direction }}{% endif %}
+"{% if bit.direction %} data-direction="{{ bit.direction }}"{% endif %}>
+  <div class="swiper-wrapper">
+
+    {% for each in bit.slides -%}
+    <div class="swiper-slide">
+      <div class="slide-content">
+      <figure class="{% if each.class %}{{ each.class }}{% endif %}">
+        <div class="headline-overlay
+          {%- if each.textbackground %} textbackground{% endif %}
+          {%- if each.textshadow %} textshadow{% endif %}
+          {%- if each.ypos == 'top' %} top{% elif each.ypos == 'middle' %} middle{% elif each.ypos == 'bottom' %} bottom{% endif %}
+          {%- if each.xpos == 'left' %} left{% elif each.xpos == 'center' %} center{% elif each.xpos == 'right' %} right{% endif %}">
+        {% if each.kicker %}<h2 style="{% if each.textcolor %}color: {{ each.textcolor }};{% endif %}{% if each.headsize %} font-size: calc(1.5vw * (1 + {{ each.headsize }}) + 27px){% endif %}">{{ each.kicker }}</h2>{% endif %}
+        {% if each.hed %}<h1 style="{% if each.textcolor %}color: {{ each.textcolor }};{% endif %}{% if each.headsize %} font-size: calc(3vw * (1 + {{ each.headsize }}) + 27px){% endif %}">{{ each.hed }}</h1>{% endif %}
+        {% if each.subhed %}<h2 style="{% if each.textcolor %}color: {{ each.textcolor }};{% endif %}{% if each.headsize %} font-size: calc(1.5vw * (1 + {{ each.headsize }}) + 27px){% endif %}">{{ each.subhed }}</h2>{% endif %}
+        {% if each.text %}<span style="{% if each.textcolor %}color: {{ each.textcolor }};{% endif %}{% if each.headsize %} font-size: calc(1vw * (1 + {{ each.headsize }}) + 18px){% endif %}">{{ each.text | linebreaks | safe }}</span>{% endif %}
+      </div>
+
+
+        </div>
+      </div>
+    {%- endfor %}
+  </div>
+  <!-- Add Pagination -->
+  <div class="swiper-pagination"></div>
+</div>
+{%- endif %}
+
+<!--
+Don't forget to run 'npm install swiper' in your project
+-->
