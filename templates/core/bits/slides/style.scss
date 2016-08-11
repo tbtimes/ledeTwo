@@ -1,3 +1,5 @@
+@import "core/mixins";
+
 /**
  * Swiper 3.3.1
  * Most modern mobile touch slider and framework with hardware accelerated transitions
@@ -215,7 +217,8 @@ button.swiper-pagination-bullet {
 }
 .swiper-pagination-bullet-active {
   opacity: 1;
-  background: #007aff;
+  // background: #007aff;
+  background: $accentcolor;
 }
 .swiper-pagination-white .swiper-pagination-bullet-active {
   background: #fff;
@@ -586,6 +589,7 @@ button.swiper-pagination-bullet {
   position: relative;
   figure {
     // border: 0 none #333;
+    border-image-width: 0;
     img {
       width: 100%;
       width: 100vw;

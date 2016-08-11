@@ -3,10 +3,10 @@
 <div class="fs lede swiper-container{% if bit.orientation %} swiper-container-{{ bit.orientation }}{% endif %}
 "{% if bit.orientation %} data-orientation="{{ bit.orientation }}"{% endif %}>
   <div class="swiper-wrapper">
+
     {% for each in bit.slides -%}
     <div class="swiper-slide">
       <div class="slide-content">
-
       <figure class="{% if each.class %}{{ each.class }}{% endif %}">
         <img {% if each.alt %} alt="{{ each.alt }}" {% endif %}
           {% if each.directsrc %} src="{{ each.directsrc }}"{% else %}
